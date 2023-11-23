@@ -16,14 +16,18 @@ class Ball:
         self.y = y if y else random.randint(0, server.background.h)
 
     def draw(self):
-        self.image.draw(self.x, self.y)
-        draw_rectangle(*self.get_bb())
+        sx = self.x - server.background.window_left
+        sy = self.y - server.background.window_bottom
+        self.image.draw(sx, sy)
+
 
     def update(self):
         pass
 
     def get_bb(self):
-        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
+        sx = self.x - server.background.window_left
+        sy = self.y - server.background.window_bottom
+        return sx - 10, sy - 10, sx + 10, sy + 10
 
     def handle_collision(self, group, other):
         match group:
