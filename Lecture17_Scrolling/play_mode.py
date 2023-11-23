@@ -3,11 +3,13 @@ import json
 import os
 
 from pico2d import *
+
 import game_framework
 import game_world
 
 import server
 from boy import Boy
+from ball import Ball
 
 from background import FixedBackground as Background
 
@@ -26,12 +28,18 @@ def handle_events():
 
 
 def init():
+
     server.background = Background()
     game_world.add_object(server.background, 0)
+    game_world.add_collision_pair('boy:ball', server.boy, None)
 
     server.boy = Boy()
-    game_world.add_object(server.boy, 1)
-    pass
+    game_world.add_object(server.boy, 2)
+
+    balls = [Ball() for _ in range(100)]
+    for ball in balls:
+        game_world.add_object(ball, 1)
+
 
 def finish():
     game_world.clear()
