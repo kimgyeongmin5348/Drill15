@@ -10,6 +10,7 @@ import game_world
 import server
 from boy import Boy
 from ball import Ball
+from flag import Flag
 
 from background import FixedBackground as Background
 
@@ -31,14 +32,23 @@ def init():
 
     server.background = Background()
     game_world.add_object(server.background, 0)
-    game_world.add_collision_pair('boy:ball', server.boy, None)
+
+
 
     server.boy = Boy()
     game_world.add_object(server.boy, 2)
+    game_world.add_collision_pair('boy:ball', server.boy, None)
 
-    balls = [Ball() for _ in range(100)]
-    for ball in balls:
-        game_world.add_object(ball, 1)
+    server.ball = Ball()
+    game_world.add_object(server.ball, 2)
+    game_world.add_collision_pair('boy:ball', None, server.ball)
+    game_world.add_collision_pair('ball:flag', server.ball, None)
+
+    server.flag = Flag()
+    game_world.add_object(server.flag, 3)
+    game_world.add_collision_pair('ball:flag', None, server.flag)
+
+
 
 
 def finish():

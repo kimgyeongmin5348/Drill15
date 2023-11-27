@@ -7,7 +7,7 @@ from pico2d import *
 class FixedBackground:
 
     def __init__(self):
-        self.image = load_image('futsal_court.png')
+        self.image = load_image('map1.png')
         self.cw = get_canvas_width()  # 화면의 너비
         self.ch = get_canvas_height()  # 화면의 높이
         self.w = self.image.w  # 이미지의 너비
@@ -70,7 +70,7 @@ cy = 700 // 600
 class InfiniteBackground:
 
     def __init__(self):
-        self.image = load_image('futsal_court.png')
+        self.image = load_image('map1.png')
         self.cw = get_canvas_width()
         self.ch = get_canvas_height()
         self.w = self.image.w
