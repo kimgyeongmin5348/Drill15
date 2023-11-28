@@ -54,9 +54,8 @@ class Ball:
     def handle_collision(self, group, other):
         match group:
             case 'boy:ball':
-                self.is_moving = True
-                self.destination_y = self.y + BALL_SPEED_PPS * 5
-                # 뭔가 여기는 behavior Tree 이용해야 할것 같음
+                self.x = self.x + 10
+
                 print('n번째 턴')
             case 'ball:flag':
                 print('다음 필드로!')
